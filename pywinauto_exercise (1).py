@@ -29,20 +29,15 @@ app = Application(backend="uia").start("notepad.exe").connect(
     title="Untitled - Notepad", timeout=10)
 # app.UntitledNotepad.print_control_identifiers()
 
-# def close_notepad():
-# print("closing notepad")
-# app.UntitledNotepad.button_select()
-# app.CloseButton.click()
-
 
 # def open_about_notepad_view(app):
-print("opening notepad 'about' view")
-fileMenu = app.UntitledNotepad.child_window(
-    title="Help", control_type="MenuItem").wrapper_object()
-fileMenu.click_input()
-newWindow = app.UntitledNotepad.child_window(
-    title="About Notepad", control_type="MenuItem").wrapper_object()
-newWindow.click_input()
+# print("opening notepad 'about' view")
+# fileMenu = app.UntitledNotepad.child_window(
+#     title="Help", control_type="MenuItem").wrapper_object()
+# fileMenu.click_input()
+# newWindow = app.UntitledNotepad.child_window(
+#     title="About Notepad", control_type="MenuItem").wrapper_object()
+# newWindow.click_input()
 
 
 # def get_number_of_headings():
@@ -56,6 +51,11 @@ newWindow.click_input()
 # def open_microsoft_licence_link():
 #     print("open microsoft license link")
 
+# def close_notepad():
+print("closing notepad")
+close = app.UntitledNotepad.child_window(
+    title="Close", control_type="Button").wrapper_object()
+close.click_input()
 
 # so it can run this code below
 # if __name__ == "__main__":
