@@ -24,9 +24,13 @@ import time
 
 # open notepad app. app variable starts and connects to the notepad window named 'Untitled - Notepad'
 # def open_notepad():
-print("open notepad")
-app = Application(backend="uia").start("notepad.exe").connect(
-    title="Untitled - Notepad", timeout=10)
+try:
+    print("opening notepad")
+    app = Application(backend="uia").start("notepad.exe").connect(
+        title="Untitled - Notepad", timeout=10)
+except Exception as e:
+    print(e)
+    raise
 
 # function to open the about window found in Help dropdown menu
 # def open_about_notepad_view(app):
@@ -34,26 +38,31 @@ print("opening notepad 'about' view")
 fileMenu = app.UntitledNotepad.child_window(
     title="Help", control_type="MenuItem").wrapper_object()
 fileMenu.click_input()
-newWindow = app.UntitledNotepad.child_window(
+about = app.UntitledNotepad.child_window(
     title="About Notepad", control_type="MenuItem").wrapper_object()
-newWindow.click_input()
+about.click_input()
 
-
-# def get_number_of_headings():
-#     print("get number of headings")
-
-
-# def close_all_sub_windows():
-#     print("close all sub windows")
+app.UntitledNotepad.print_control_identifiers()
 
 # function to open microsoft license link in the about window, licenseLink variable targets the link.
 # def open_microsoft_license_link():
-print("open microsoft license link")
+print("opening microsoft license link")
 licenseLink = app.UntitledNotepad.child_window(
     title="Microsoft Software License Terms", control_type="Hyperlink").wrapper_object()
 licenseLink.click_input()
-app.UntitledNotepad.print_control_identifiers()
 
+# def get_number_of_headings():
+print("get number of headings")
+# document = app.UntitledNotepad.child_window(
+#     title="Microsoft Software License Terms", control_type="Window").window_text()
+# print(document)
+
+# def close_all_sub_windows():
+print("close all sub windows")
+closeLicenseWindow = app.UntitledNotepad[u'OKButton4:OK'].wrapper_object()
+closeLicenseWindow.click_input()
+closeAboutWindow = app.UntitledNotepad[u'OKButton:OK'].wrapper_object()
+closeAboutWindow.click_input()
 # function to close the notepad, close variable targets close button on notepad window
 
 
