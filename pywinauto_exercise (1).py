@@ -22,13 +22,13 @@ import time
 # app.SaveAs.edit1.set_text("Example-utf8.txt")
 # app.SaveAs.Save.click()
 
-
+# open notepad app. app variable starts and connects to the notepad window named 'Untitled - Notepad'
 # def open_notepad():
 print("open notepad")
 app = Application(backend="uia").start("notepad.exe").connect(
     title="Untitled - Notepad", timeout=10)
 
-
+# function to open the about window found in Help dropdown menu
 # def open_about_notepad_view(app):
 print("opening notepad 'about' view")
 fileMenu = app.UntitledNotepad.child_window(
@@ -46,13 +46,15 @@ newWindow.click_input()
 # def close_all_sub_windows():
 #     print("close all sub windows")
 
-
-# def open_microsoft_licence_link():
+# function to open microsoft license link in the about window, licenseLink variable targets the link.
+# def open_microsoft_license_link():
 print("open microsoft license link")
 licenseLink = app.UntitledNotepad.child_window(
     title="Microsoft Software License Terms", control_type="Hyperlink").wrapper_object()
 licenseLink.click_input()
 app.UntitledNotepad.print_control_identifiers()
+
+# function to close the notepad, close variable targets close button on notepad window
 
 
 def close_notepad():
