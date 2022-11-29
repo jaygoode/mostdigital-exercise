@@ -117,7 +117,6 @@ if __name__ == "__main__":
     # count how many NUMBERED headings there are in Lisense term view
     # example of numbered heading: "13.	Consumer Rights, Regional Variations."
     n_headings = get_number_of_headings(app)
-    print(n_headings)
     close_all_sub_windows(app)
     close_notepad(app)
     assert n_headings == 15, f"Wrong number of headings: {n_headings}"
