@@ -4,7 +4,6 @@
 import re  # optional
 import pywinauto
 from pywinauto.application import Application
-import time
 
 # instructions:
 # - pip install (--user) -r pywinauto
